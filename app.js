@@ -18,7 +18,7 @@ const row=a=>`<article><a href="${link(a)}">${ph(a)}</a><div><span class="kicker
 const by=c=>ART.filter(a=>a.cat===c);
 function side(){
  return `<aside class="side"><div class="box"><h4>Market snapshot</h4><p style="font-size:12px;line-height:1.5;color:#657181;margin:0 0 12px">Provider quotes - may be delayed. SENSEX: end-of-day (EOD). For information only, not for trading.</p>
- <div id="market-widget" class="tradingview-widget-container" style="width:100%;min-height:250px"><div class="tradingview-widget-container__widget"></div><div class="tradingview-widget-copyright" style="font-size:12px;padding:8px 0"><a href="https://www.tradingview.com/markets/" rel="noopener nofollow" target="_blank">Market summary</a> by TradingView</div></div>
+ <div id="market-widget" class="tradingview-widget-container" style="width:100%;min-height:260px"><div class="tradingview-widget-container__widget"></div><div class="tradingview-widget-copyright" style="font-size:12px;padding:8px 0"><a href="https://www.tradingview.com/markets/" rel="noopener nofollow" target="_blank">Market summary</a> by TradingView</div></div>
  <p style="font-size:12px;line-height:1.5;color:#657181;margin:12px 0 0">NIFTY 50 / BANK NIFTY: unavailable in this free widget. No demo values shown.</p>
  <p id="market-feed-status" style="font-size:12px;line-height:1.5;color:#657181;margin:8px 0 0">If quotes do not load, <a href="https://www.tradingview.com/markets/" target="_blank" rel="noopener nofollow">view the source</a>. Data availability and delays depend on the provider.</p></div>
  <div class="box trend"><h4>Most read</h4><ol>${[0,7,13,20,26].map(i=>`<li><a href="${link(ART[i])}">${ART[i].t}</a></li>`).join('')}</ol></div></aside>`;
@@ -62,9 +62,9 @@ function initMarketSnapshot(){
  const host=document.getElementById('market-widget');
  if(!host)return;
  const script=document.createElement('script');
- script.src='https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js';
+ script.src='https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js';
  script.async=true;
- script.textContent=JSON.stringify({width:'100%',height:250,locale:'en',colorTheme:'light',isTransparent:false,showSymbolLogo:false,symbolsGroups:[{name:'Market snapshot',symbols:[{name:'BSE:SENSEX',displayName:'SENSEX (EOD)'},{name:'FX_IDC:USDINR',displayName:'USD/INR'},{name:'OANDA:XAUUSD',displayName:'Gold (USD/oz)'},{name:'TVC:UKOIL',displayName:'Brent (USD/bbl)'}]}]});
+ script.textContent=JSON.stringify({"width": "100%", "height": 260, "showChart": false, "tabs": [{"title": "Markets", "symbols": [{"s": "BSE:SENSEX", "d": "SENSEX (EOD)"}, {"s": "FX_IDC:USDINR", "d": "USD/INR"}, {"s": "OANDA:XAUUSD", "d": "Gold (USD/oz)"}, {"s": "TVC:UKOIL", "d": "Brent (USD/bbl)"}]}], "showSymbolLogo": false, "colorTheme": "light", "isTransparent": false, "locale": "en"});
  script.onerror=()=>{document.getElementById('market-feed-status').textContent='Quotes unavailable. Please use the source link below. No demo prices are shown.';};
  host.appendChild(script);
 }
