@@ -4,9 +4,7 @@ const ph=a=>`<div class="ph"><img src="assets/${a.cat}-${a.id%2}.jpg" alt="" loa
 const cname=c=>CMETA[c][0];
 const link=a=>`article.html?id=${a.id}`;
 function shell(active){
- const tk=TICK.map(t=>`<span><b>${t[0]}</b>${t[1]} <span class="${t[3]?'up':'down'}">${t[3]?'▲':'▼'} ${t[2]}</span></span>`).join('');
- $('#top').innerHTML=`<div class="ticker"><div class="wrap row"><span class="tag">MARKETS</span>${tk}</div></div>
- <div class="wrap"><div class="topbar"><span>Wednesday, 28 October 2026</span><span>English</span></div>
+ $('#top').innerHTML=` <div class="wrap"><div class="topbar"><span>Wednesday, 28 October 2026</span><span>English</span></div>
  <div class="masthead"><a href="index.html"><img src="assets/logo.png" alt="The Capital Review"></a><div class="sub"><input placeholder="Search The Capital Review" aria-label="Search"><button class="btn">Subscribe</button></div></div></div>
  <nav><div class="wrap"><ul>${CATS.map(c=>`<li><a href="${c[1]}" class="${c[0]===active?'on':''}">${c[0]}</a></li>`).join('')}</ul></div></nav>`;
  $('#foot').innerHTML=`<footer><div class="wrap"><div class="cols"><div><div class="logo"><img src="assets/logo.png" alt=""></div><p>Business, finance and economy, explained clearly. Independent coverage of Indian business, markets and policy.</p></div>
